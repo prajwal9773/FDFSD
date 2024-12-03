@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle } from "@headlessui/react";
+import { DialogTitle } from "@headlessui/react";
 import clsx from "clsx";
 import { FaQuestion } from "react-icons/fa";
 import ModalWrapper from "./ModalWrapper";

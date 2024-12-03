@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useLogoutMutation } from "../redux/slices/api/authApiSlice";
 import { logout } from "../redux/slices/authSlice";
+import AddUser from "./AddUser";
 
 // import { getInitials } from "../utils"; 
 
@@ -95,6 +96,7 @@ const UserAvatar = () => {
           </Transition>
         </Menu>
       </div>
+      <AddUser open={open} setOpen={setOpen} userData={user}/>
     </>
   );
 };

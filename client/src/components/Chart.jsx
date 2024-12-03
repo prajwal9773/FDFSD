@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { chartData } from "../assets/data";
+
 
 const getPath = (x, y, width, height) => {
     return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
@@ -25,10 +25,10 @@ const TriangleBar = (props) => {
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
   };
 
-export const Chart = () => {
+export const Chart = ({data}) => {
   return (
     <ResponsiveContainer width={"100%"} height={300}>
-      <BarChart width={150} height={40} data={chartData}>
+      <BarChart width={150} height={40} data={data}>
         <XAxis dataKey='name' />
         <YAxis />
         <Tooltip />
