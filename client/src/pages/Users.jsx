@@ -46,7 +46,7 @@ const Users = () => {
 
   const deleteHandler = async () => {
     try {
-      const result = await deleteUser(selected) // Pass the ID of the user to delete
+      const result = await deleteUser(selected)
   
       refetch();
       toast.success(result?.message || "User deleted successfully!");
@@ -85,7 +85,6 @@ const userStatusClick = (el)=>{
         <th className='py-2'>Title</th>
         <th className='py-2'>Email</th>
         <th className='py-2'>Role</th>
-        <th className='py-2'>Active</th>
       </tr>
     </thead>
   );
@@ -107,7 +106,7 @@ const userStatusClick = (el)=>{
       <td className='p-2'>{user.email || "user.emal.com"}</td>
       <td className='p-2'>{user.role}</td>
 
-      <td>
+      {/* <td>
         <button
           onClick={() => userStatusClick(user)}
           className={clsx(
@@ -117,7 +116,7 @@ const userStatusClick = (el)=>{
         >
           {user?.isActive ? "Active" : "Disabled"}
         </button>
-      </td>
+      </td> */}
 
       <td className='p-2 flex gap-4 justify-end'>
         <Button

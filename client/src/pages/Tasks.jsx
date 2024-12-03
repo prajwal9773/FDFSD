@@ -31,9 +31,9 @@ const Tasks = () => {
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const rolee = user.user.role
+  const roles = user.user.role
   const status = params?.status || "";
-  console.log(rolee)
+  console.log(roles)
   return loading ? (
     <div className='py-10'>
       <Loading />
@@ -43,7 +43,7 @@ const Tasks = () => {
       <div className='flex items-center justify-between mb-4'>
         <Title title={status ? `${status} Tasks` : "Tasks"} />
 
-        {!status && rolee !== "user" &&(
+        {!status && roles !== "user" &&(
           <Button
             onClick={() => setOpen(true)}
             label='Create Task'

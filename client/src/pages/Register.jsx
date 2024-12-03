@@ -145,7 +145,7 @@ const Register = () => {
                                     required: "Role is required!",
                                 })}
                                 errors={errors.role ? errors.role.message : ""}
-                            /> 
+                            />
                             {isLoading ? (
                                 <Loading />
                             ) : (

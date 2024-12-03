@@ -65,7 +65,7 @@ const UserAvatar = () => {
                   )}
                 </MenuItems>
 
-                <MenuItems>
+                {/* <MenuItems>
                   {({ active }) => (
                     <button
                       onClick={() => setOpenPassword(true)}
@@ -75,7 +75,7 @@ const UserAvatar = () => {
                       Change Password
                     </button>
                   )}
-                </MenuItems>
+                </MenuItems> */}
 
                 <MenuItems>
                   {({ active }) => (

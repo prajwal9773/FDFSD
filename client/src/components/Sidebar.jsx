@@ -17,36 +17,43 @@ const linkData = [
     label: "Dashboard",
     link: "dashboard",
     icon: <MdDashboard />,
+    roles: ["Admin"],
   },
   {
     label: "Tasks",
     link: "tasks",
     icon: <FaTasks />,
+    roles: ["Admin","team_lead","user"],
   },
   {
     label: "Completed",
     link: "completed/completed",
     icon: <MdTaskAlt />,
+    roles: ["Admin","team_lead","user"],
   },
   {
     label: "In Progress",
     link: "in-progress/in progress",
     icon: <MdOutlinePendingActions />,
+    roles: ["Admin","team_lead","user"],
   },
   {
     label: "To Do",
     link: "todo/todo",
     icon: <MdOutlinePendingActions />,
+    roles: ["Admin","team_lead","user"],
   },
   {
     label: "Team",
     link: "team",
     icon: <FaUsers />,
+    roles: ["Admin","team_lead"],
   },
   {
     label: "Trash",
     link: "trashed",
     icon: <FaTrashAlt />,
+    roles: ["Admin"],
   },
 ];
 
@@ -58,7 +65,9 @@ const Sidebar = () => {
 
   const path = location.pathname.split("/")[1];
 
-  const sidebarLinks = user?.isAdmin ? linkData : linkData.slice(0, 7);
+  const sidebarLinks = linkData.filter((link) =>
+    link.roles.includes(user?.role)
+  );
 
   const closeSidebar = () => {
     dispatch(setOpenSidebar(false));
@@ -94,12 +103,12 @@ const Sidebar = () => {
         ))}
       </div>
 
-      <div className=''>
+      {/* <div className=''>
         <button className='w-full flex gap-2 p-2 items-center text-lg text-gray-800'>
           <MdSettings />
           <span>Settings</span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
