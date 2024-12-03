@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Title from "../components/Title";
 import Button from "../components/Button";
 import { IoMdAdd } from "react-icons/io";
-
+import { useSelector } from "react-redux"
 import { getInitials } from "../utils";
 import clsx from "clsx";
 import ConfirmatioDialog, { UserAction } from "../components/Dialogs";
@@ -16,6 +16,8 @@ const Users = () => {
   const [open, setOpen] = useState(false);
   const [openAction, setOpenAction] = useState(false);
   const [selected, setSelected] = useState(null);
+  const { user } = useSelector((state) => state.auth);
+  const roles = user.role
 
   const{data, isLoading, refetch} = useGetTeamListQuery();
 
@@ -43,7 +45,7 @@ const Users = () => {
     }
 
   };
- 
+
 
   const deleteHandler = async () => {
     try {
@@ -86,7 +88,6 @@ const userStatusClick = (el)=>{
         <th className='py-2'>Title</th>
         <th className='py-2'>Email</th>
         <th className='py-2'>Role</th>
-        <th className='py-2'>Active</th>
       </tr>
     </thead>
   );
@@ -108,7 +109,7 @@ const userStatusClick = (el)=>{
       <td className='p-2'>{user.email || "user.emal.com"}</td>
       <td className='p-2'>{user.role}</td>
 
-      <td>
+      {/* <td>
         <button
           onClick={() => userStatusClick(user)}
           className={clsx(
@@ -118,8 +119,8 @@ const userStatusClick = (el)=>{
         >
           {user?.isActive ? "Active" : "Disabled"}
         </button>
-      </td>
-
+      </td> */}
+      {roles === "Admin" && (
       <td className='p-2 flex gap-4 justify-end'>
         <Button
           className='text-blue-600 hover:text-blue-500 font-semibold sm:px-0'
@@ -135,6 +136,7 @@ const userStatusClick = (el)=>{
           onClick={() => deleteClick(user?._id)}
         />
       </td>
+      )}
     </tr>
   );
 
@@ -143,12 +145,15 @@ const userStatusClick = (el)=>{
       <div className='w-full md:px-1 px-0 mb-6'>
         <div className='flex items-center justify-between mb-8'>
           <Title title='  Team Members' />
-          <Button
+          {roles === "Admin" && (
+            <Button
             label='Add New User'
             icon={<IoMdAdd className='text-lg' />}
             className='flex flex-row-reverse gap-1 items-center bg-blue-600 text-white rounded-md 2xl:py-2.5'
             onClick={() => setOpen(true)}
           />
+          )}
+          
         </div>
 
         <div className='bg-white px-2 md:px-4 py-4 shadow-md rounded'>

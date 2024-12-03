@@ -25,14 +25,22 @@ export const formatDate = (date) => {
   }
   
   export function getInitials(fullName) {
-    const names = fullName.split(" ");
+    if (!fullName || typeof fullName !== "string") {
+      return ""; // Return an empty string for invalid input
+    }
   
-    const initials = names.slice(0, 2).map((name) => name[0].toUpperCase());
+    const names = fullName
+      .trim() // Remove extra spaces
+      .split(" ") // Split the name by spaces
+      .filter((name) => name.length > 0); // Remove empty elements
   
-    const initialsStr = initials.join("");
+    const initials = names
+      .slice(0, 2) // Take the first two valid names
+      .map((name) => name[0]?.toUpperCase() || ""); // Safely access the first character
   
-    return initialsStr;
+    return initials.join(""); // Join initials to form a string
   }
+  
   
   export const PRIOTITYSTYELS = {
     high: "text-red-600",

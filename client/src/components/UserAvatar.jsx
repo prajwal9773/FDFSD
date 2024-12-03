@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useLogoutMutation } from "../redux/slices/api/authApiSlice";
 import { logout } from "../redux/slices/authSlice";
-import AddUser from "./AddUser";
-
-// import { getInitials } from "../utils"; 
+import { getInitials } from "../utils";
 
 const UserAvatar = () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +18,6 @@ const UserAvatar = () => {
 
   const [logoutUser] = useLogoutMutation();
   const logoutHandler =async () => {
-    // console.log("logout");
 
     try{
         await logoutUser().unwrap();
@@ -38,9 +35,9 @@ const UserAvatar = () => {
       <div>
         <Menu as='div' className='relative inline-block text-left'>
           <div>
-            <MenuButton className='w-10 h-10 2xl:w-12 2xl:h-12 items-center justify-center rounded-full bg-blue-600'>
+            <MenuButton className='w-10 h-10 2xl:w-12 2xl:h-12 items-center justify-center rounded-full bg-violet-600'>
               <span className='text-white font-semibold'>
-                {/* {getInitials(user?.name)} */}
+                {getInitials(user?.name)}
               </span>
             </MenuButton>
           </div>
@@ -68,7 +65,7 @@ const UserAvatar = () => {
                   )}
                 </MenuItems>
 
-                <MenuItems>
+                {/* <MenuItems>
                   {({ active }) => (
                     <button
                       onClick={() => setOpenPassword(true)}
@@ -78,7 +75,7 @@ const UserAvatar = () => {
                       Change Password
                     </button>
                   )}
-                </MenuItems>
+                </MenuItems> */}
 
                 <MenuItems>
                   {({ active }) => (
@@ -96,7 +93,6 @@ const UserAvatar = () => {
           </Transition>
         </Menu>
       </div>
-      <AddUser open={open} setOpen={setOpen} userData={user}/>
     </>
   );
 };
