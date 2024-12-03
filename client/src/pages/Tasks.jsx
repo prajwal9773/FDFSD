@@ -12,6 +12,7 @@ import BoardView from "../components/BoardView";
 import { tasks } from "../assets/data";
 import Table from "../components/task/Table";
 import AddTask from "../components/task/AddTask";
+import { useSelector } from "react-redux";
 
 const TABS = [
   { title: "Board View", icon: <MdGridView /> },
@@ -26,13 +27,13 @@ const TASK_TYPE = {
 
 const Tasks = () => {
   const params = useParams();
-
+  const user = useSelector((state) => state.auth);
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const rolee = user.user.role
   const status = params?.status || "";
-
+  console.log(rolee)
   return loading ? (
     <div className='py-10'>
       <Loading />
@@ -42,7 +43,7 @@ const Tasks = () => {
       <div className='flex items-center justify-between mb-4'>
         <Title title={status ? `${status} Tasks` : "Tasks"} />
 
-        {!status && (
+        {!status && rolee !== "user" &&(
           <Button
             onClick={() => setOpen(true)}
             label='Create Task'

@@ -1,28 +1,32 @@
 import Login from "./pages/Login"
-import {Routes, Route, Navigate, Outlet, useLocation} from "react-router-dom"
-import Dashboard from "./pages/Dashboard" ;
+import { Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom"
+import Dashboard from "./pages/Dashboard";
 import { IoClose } from "react-icons/io5";
 import TaskDetails from "./pages/TaskDetails";
 import Tasks from "./pages/Tasks";
 import Trash from "./pages/Trash";
 import Users from "./pages/Users";
-import {Toaster} from "sonner";
+import { Toaster } from "sonner";
 import { useSelector } from "react-redux";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import { Fragment, useRef } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { Transition } from "@headlessui/react";
-
+import Homepagelayout from "./pages/Homepagelayout";
+import Register from "./pages/Register";
 function Layout() {
-  const  user  = useSelector((state)=>state.auth);
+  const user = useSelector((state) => state.auth);
   const location = useLocation();
 
   return user ? (
     <div className='w-full h-screen flex flex-col md:flex-row'>
-      <div className='w-1/5 h-screen bg-white sticky top-0 hidden md:block'>
-        <Sidebar />
-      </div>
+      {user.user.role !== "user" &&(
+        <div className='w-1/5 h-screen bg-white sticky top-0 hidden md:block'>
+          <Sidebar />
+        </div>)
+      }
+
 
       <MobileSidebar />
 
@@ -35,7 +39,7 @@ function Layout() {
       </div>
     </div>
   ) : (
-    <Navigate to='/log-in' state={{ from: location }} replace />
+    <Navigate to='/' state={{ from: location }} replace />
   );
 }
 
@@ -91,31 +95,29 @@ const MobileSidebar = () => {
   );
 };
 function App() {
-
-
   return (
-      <main>
-        <Routes>
-          <Route element={<Layout/>}>
-            <Route path='/' element={<Navigate to = '/Dashboard' />}/>
-            <Route path='/dashboard' element={<Dashboard/>} />
-            <Route path='/tasks' element ={<Tasks/>}/>
-            <Route path='/completed/:status' element ={<Tasks/>}/>
-            <Route path='/in-progress/:status' element ={<Tasks/>}/>
-            <Route path='/todo/:status' element ={<Tasks/>}/>
-            <Route path='/team' element ={<Users/>}/>
-            <Route path='/trashed' element ={<Trash/>}/>
-            <Route path='/task/:id' element ={<TaskDetails/>}/>
-            
-     {/*  these are protected routes */}
-          </Route>
-          <Route path='/log-in' element={<Login/>}/> 
-        </Routes>
+    <main>
+      <Routes>
+        <Route path='/' element={<Navigate to='/home' />} />
+        <Route path="/home" element={<Homepagelayout />} />
+        <Route element={<Layout />}>
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/tasks' element={<Tasks />} />
+          <Route path='/completed/:status' element={<Tasks />} />
+          <Route path='/in-progress/:status' element={<Tasks />} />
+          <Route path='/todo/:status' element={<Tasks />} />
+          <Route path='/team' element={<Users />} />
+          <Route path='/trashed' element={<Trash />} />
+          <Route path='/task/:id' element={<TaskDetails />} />
+        </Route>
+        <Route path='/register' element={<Register />} />
+        <Route path='/log-in' element={<Login />} />
+      </Routes>
 
-        <Toaster richColors/>
-      </main>
-     
-    
+      <Toaster richColors />
+    </main>
+
+
   )
 }
 

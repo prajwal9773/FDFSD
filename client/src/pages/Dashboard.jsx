@@ -12,7 +12,7 @@ import moment from "moment";
 import { summary } from "../assets/data";
 import clsx from "clsx";
 import { Chart } from "../components/Chart";
-import { BGS, PRIOTITYSTYELS, TASK_TYPE, getInitials } from "../utils";
+import { BGS, PRIOTITYSTYELS, TASK_TYPE, getInitials } from "../utils/index";
 import UserInfo from "../components/UserInfo";
 
 const TaskTable = ({ tasks }) => {

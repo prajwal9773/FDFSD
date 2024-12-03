@@ -71,21 +71,21 @@ const Sidebar = () => {
         onClick={closeSidebar}
         className={clsx(
           "w-full lg:w-3/4 flex gap-2 px-3 py-2 rounded-full items-center text-gray-800 text-base hover:bg-[#6825ed2d]",
-          path === el.link.split("/")[0] ? "bg-blue-700 text-neutral-100" : ""
+          path === el.link.split("/")[0] ? "bg-violet-700 text-neutral-100" : ""
         )}
       >
         {el.icon}
-        <span className='hover:text-[#2564ed]'>{el.label}</span>
+        <span className='hover:text-[#a550f0]'>{el.label}</span>
       </Link>
     );
   };
   return (
     <div className='w-full  h-full flex flex-col gap-6 p-5'>
       <h1 className='flex gap-1 items-center'>
-        <p className='bg-blue-600 p-2 rounded-full'>
-          <MdOutlineAddTask className='text-white text-2xl font-black' />
+        <p className=' p-2 rounded-full'>
+          <img src="/favicon.ico"></img>
         </p>
-        <span className='text-2xl font-bold text-black'>workNest</span>
+        <span className='text-2xl font-bold text-black'>Planity</span>
       </h1>
 
       <div className='flex-1 flex flex-col gap-y-5 py-8'>

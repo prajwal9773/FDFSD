@@ -43,13 +43,12 @@ const Users = () => {
     }
 
   };
- 
 
   const deleteHandler = async () => {
     try {
       const result = await deleteUser(selected) // Pass the ID of the user to delete
   
-      refetch(); // Refresh the user list
+      refetch();
       toast.success(result?.message || "User deleted successfully!");
       setSelected(null);
       setTimeout(() => {
