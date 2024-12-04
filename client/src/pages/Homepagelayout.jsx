@@ -1,7 +1,7 @@
 import React from 'react';
-import HomePage from './Homepage';
+import HomePage from '../components/Homepage';
 import Navbar from './Navbar';
-import Footer from './Footer';
+import Footer from '../components/Footer';
 
 const Homepagelayout = ({ children }) => {
   return (

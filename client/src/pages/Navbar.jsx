@@ -3,7 +3,7 @@ import PlanityImage from '/favicon.ico';
 
 export default function Navbar() {
   return (
-    <div className="fixed w-full top-0 h-14 px-4 border-b shadow-sm bg-white flex items-center">
+    <div className="w-full top-0 h-14 px-4 border-b shadow-sm bg-white flex items-center">
       <div className="md:max-w-screen-2xl mx-auto w-full flex items-center justify-between">
       <div style={{display:"flex",alignItems:"center"}}>
         <img src={PlanityImage} alt="Planity Logo" style={{ height: "30px", width: "30px", marginTop: "5px", marginRight: "8px" }} />

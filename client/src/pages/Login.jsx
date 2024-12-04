@@ -24,7 +24,6 @@ const Login = () => {
   const [login, { isLoading }] = useLoginMutation()
 
   const submitHandler = async (data) => {
-    // console.log("kuch to hua submit")
     try {
       const result = await login(data).unwrap();
       dispatch(setCredentials(result));
@@ -43,9 +42,6 @@ const Login = () => {
     }
   }
 
-  // useEffect(() => {
-  //   user && navigate("/dashboard");
-  // }, [user]);
 
   return (
     <div className='w-full min-h-screen flex items-center justify-center flex-col lg:flex-row bg-[#f3f4f6]'>

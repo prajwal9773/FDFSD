@@ -52,8 +52,7 @@ const Register = () => {
                             Manage all your task in one place!
                         </span>
                         <p className='flex flex-col gap-0 md:gap-4 text-4xl md:text-6xl 2xl:text-7xl font-black text-center text-blue-700'>
-                            <span>Work-Nest</span>
-                            <span>Task Manager</span>
+                            <span>Planity</span>
                         </p>
                         <div className='cell'>
                             <div className='circle rotate-in-up-left'>
@@ -66,7 +65,7 @@ const Register = () => {
                 {/* right side */}
                 <div className='w-fullmd:w-1/3 p-4 md:p-1 flex flex-col justify-center items-center'>
                     <form onSubmit={handleSubmit(submitHandler)}
-                        className='form-container w-full md:w-[400px] flex flex-col gap-y-8 bg-white px-10 pt-14 pb-14'
+                        className='form-container w-full md:w-[500px] flex flex-col gap-y-8 bg-white px-10 pt-14 pb-14'
                     >
                         <div>
                             <p className='text-purple-600 text-3xl font-bold text-center'>🖋️ Register now 📚</p>
@@ -74,8 +73,8 @@ const Register = () => {
                                 Hustle now for a better Tommorow
                             </p>
                         </div>
-                        <div className='flex flex-col gap-y-5'>
-
+                        <div className='flex flex-row gap-y-5'>
+                            <div className='gap-y-5 mr-4'>
                             <Textbox
                                 placeholder='Username'
                                 type='username'
@@ -118,7 +117,8 @@ const Register = () => {
                                 }
                                 errors={errors.password ? errors.password.message : ""}
                             />
-
+                            </div>
+                            <div>
                             <Textbox
                                 placeholder='Title'
                                 type='text'
@@ -146,7 +146,9 @@ const Register = () => {
                                 })}
                                 errors={errors.role ? errors.role.message : ""}
                             />
-                            {isLoading ? (
+                            </div>
+                        </div>
+                        {isLoading ? (
                                 <Loading />
                             ) : (
                                 <Button
@@ -156,8 +158,6 @@ const Register = () => {
                                 />
 
                             )}
-                        </div>
-
 
                     </form>
 

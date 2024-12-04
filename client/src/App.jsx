@@ -15,6 +15,8 @@ import { useDispatch } from "react-redux";
 import { Transition } from "@headlessui/react";
 import Homepagelayout from "./pages/Homepagelayout";
 import Register from "./pages/Register";
+import About from "./pages/About";
+import Terms from "./pages/Terms";
 function Layout() {
   const user = useSelector((state) => state.auth);
   const location = useLocation();
@@ -98,6 +100,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Navigate to='/home' />} />
         <Route path="/home" element={<Homepagelayout />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/termsofservice" element={<Terms />} />
         <Route element={<Layout />}>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/tasks' element={<Tasks />} />
