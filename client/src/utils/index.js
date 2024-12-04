@@ -1,5 +1,4 @@
 export const formatDate = (date) => {
-    // Get the month, day, and year
     const month = date.toLocaleString("en-US", { month: "short" });
     const day = date.getDate();
     const year = date.getFullYear();
@@ -26,19 +25,18 @@ export const formatDate = (date) => {
   
   export function getInitials(fullName) {
     if (!fullName || typeof fullName !== "string") {
-      return ""; // Return an empty string for invalid input
+      return "";
     }
   
     const names = fullName
-      .trim() // Remove extra spaces
-      .split(" ") // Split the name by spaces
-      .filter((name) => name.length > 0); // Remove empty elements
+      .trim()
+      .split(" ")
+      .filter((name) => name.length > 0);
   
     const initials = names
-      .slice(0, 2) // Take the first two valid names
-      .map((name) => name[0]?.toUpperCase() || ""); // Safely access the first character
-  
-    return initials.join(""); // Join initials to form a string
+      .slice(0, 2)
+      .map((name) => name[0]?.toUpperCase() || "")
+    return initials.join("");
   }
   
   
