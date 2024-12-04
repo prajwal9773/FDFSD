@@ -10,42 +10,43 @@ import { useRegisterMutation } from "../redux/slices/api/authApiSlice";
 import { toast } from "sonner";
 import { useUpdateUserMutation } from "../redux/slices/api/userApiSlice";
 import { setCredentials } from "../redux/slices/authSlice";
+import SelectBox from "./SelectBox";
 
 const AddUser = ({ open, setOpen, userData }) => {
   let defaultValues = userData ?? {};
   const { user } = useSelector((state) => state.auth);
 
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues });
 
-  const [addNewUser, {isLoading}] = useRegisterMutation()
-  const [updateUser, {isLoading: isUpdating}] = useUpdateUserMutation();
+  const [addNewUser, { isLoading }] = useRegisterMutation()
+  const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
 
-  const handleOnSubmit = async(data) => {
-    try{
-        if(userData){
-            const result = await updateUser(data).unwrap();
-            toast.success("User updated successfully");
+  const handleOnSubmit = async (data) => {
+    try {
+      if (userData) {
+        const result = await updateUser(data).unwrap();
+        toast.success("User updated successfully");
 
-            if(userData?._id === user?._id){
-             dispatch(setCredentials({...result.user}))
-            }
-
-        }else{
-            const result = await addNewUser({...data, password: data.email}).unwrap();
-            toast.success("New user added successfully");
+        if (userData?._id === user?._id) {
+          dispatch(setCredentials({ ...result.user }))
         }
 
-        setTimeout(()=>{
-            setOpen(false);
-        }, 1500);
+      } else {
+        const result = await addNewUser({ ...data, password: data.email }).unwrap();
+        toast.success("New user added successfully");
+      }
 
-    }catch(error){
-     toast.error("Something went wrong");
+      setTimeout(() => {
+        setOpen(false);
+      }, 1500);
+
+    } catch (error) {
+      toast.error("Something went wrong");
     }
 
   };
@@ -95,17 +96,21 @@ const AddUser = ({ open, setOpen, userData }) => {
               error={errors.email ? errors.email.message : ""}
             />
 
-            <Textbox
-              placeholder='Role'
-              type='text'
-              name='role'
-              label='Role'
-              className='w-full rounded'
+            <SelectBox
+              placeholder="Role"
+              name="role"
+              label="Role"
+              className="w-full rounded"
               register={register("role", {
                 required: "User role is required!",
               })}
               error={errors.role ? errors.role.message : ""}
+              options={[
+                { value: "user", label: "User" },
+                { value: "team_lead", label: "Team Lead" },
+              ]}
             />
+
           </div>
 
           {isLoading || isUpdating ? (

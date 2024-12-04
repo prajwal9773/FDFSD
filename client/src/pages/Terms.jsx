@@ -1,10 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar"; // Import Navbar component
+import Navbar from "./Navbar";
 
 const Terms = () => {
     return (
         <div className="bg-gray-100 min-h-screen">
-            {/* Navbar Component */}
             <Navbar />
 
             <div className="p-8 max-w-4xl mx-auto bg-white rounded-lg shadow-md mt-6">

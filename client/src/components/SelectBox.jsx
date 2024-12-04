@@ -22,7 +22,7 @@ const SelectBox = React.forwardRef(
                             className
                         )}
                     >
-                        <option value="">{placeholder || "Select an option"}</option>
+                        <option value="" disabled>{placeholder || "Select an option"}</option>
                         {options.map((option) => (
                             <option key={option.value} value={option.value}>
                                 {option.label}
