@@ -30,59 +30,59 @@ const Trash = () => {
   const [type, setType] = useState("delete");
   const [selected, setSelected] = useState("");
 
-  const {data, isLoading, refetch} = useGetAllTaskQuery({
+  const { data, isLoading, refetch } = useGetAllTaskQuery({
     strQuery: "",
-    isTrashed:"true",
-    search:"",
+    isTrashed: "true",
+    search: "",
 
   });
 
   const [deleteRestoreTask] = useDeleteRestoreTestMutation();
 
-  const deleteRestoreHandler = async()=>{
-    try{
+  const deleteRestoreHandler = async () => {
+    try {
       let result;
       switch (type) {
         case "delete":
           result = await deleteRestoreTask({
-            id:selected,
-            actionType:"delete",
+            id: selected,
+            actionType: "delete",
           }).unwrap();
-          
+
           break;
         case "deleteAll":
           result = await deleteRestoreTask({
-            id:selected,
-            actionType:"deleteAll",
+            id: selected,
+            actionType: "deleteAll",
           }).unwrap();
-          
+
           break;
 
 
         case "restore":
           result = await deleteRestoreTask({
-            id:selected,
-            actionType:"restore",
+            id: selected,
+            actionType: "restore",
           }).unwrap();
-          
+
           break;
-       case "restoreAll":
-        result = await deleteRestoreTask({
-          id:selected,
-          actionType:"restoreAll",
-        }).unwrap();
-          
-           break;
-      
+        case "restoreAll":
+          result = await deleteRestoreTask({
+            id: selected,
+            actionType: "restoreAll",
+          }).unwrap();
+
+          break;
+
       }
 
       toast.success(result?.message);
-      setTimeout(()=>{
+      setTimeout(() => {
         setOpenDialog(false);
         refetch();
       }, 500)
 
-    }catch(error){
+    } catch (error) {
       console.log(error);
       toast.error(error?.data?.message || error.error);
     }
@@ -113,12 +113,12 @@ const Trash = () => {
     setOpenDialog(true);
   };
 
-  if(isLoading)
-  return(
-    <div className="py-10">
-      <Loading/>
-    </div>
-  )
+  if (isLoading)
+    return (
+      <div className="py-10">
+        <Loading />
+      </div>
+    )
 
   const TableHeader = () => (
     <thead className='border-b border-gray-300'>

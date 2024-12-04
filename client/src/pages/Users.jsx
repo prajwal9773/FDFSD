@@ -48,9 +48,8 @@ const Users = () => {
 
   const deleteHandler = async () => {
     try {
-      const result = await deleteUser(selected) // Pass the ID of the user to delete
-  
-      refetch(); // Refresh the user list
+      const result = await deleteUser(selected)
+      refetch();
       toast.success(result?.message || "User deleted successfully!");
       setSelected(null);
       setTimeout(() => {
@@ -105,7 +104,7 @@ const userStatusClick = (el)=>{
       </td>
 
       <td className='p-2'>{user.title}</td>
-      <td className='p-2'>{user.email || "user.emal.com"}</td>
+      <td className='p-2'>{user.email || "user.email.com"}</td>
       <td className='p-2'>{user.role}</td>
 
       {/* <td>
