@@ -23,9 +23,11 @@ const ICONS = {
 
 const TaskCard = ({ task }) => {
   const { user } = useSelector((state) => state.auth);
+  const isUserInTeam = task?.team?.some((member) => member._id === user?._id);
   const [open, setOpen] = useState(false);
+  const canViewTask = isUserInTeam || user?.role === 'Admin'
 
-  return (
+  return canViewTask ? (
     <>
       <div className='w-full h-fit bg-white shadow-md p-4 rounded'>
         <div className='w-full flex justify-between'>
@@ -39,8 +41,7 @@ const TaskCard = ({ task }) => {
             <span className='uppercase'>{task?.priority} Priority</span>
           </div>
 
-           <TaskDialog task={task} />
-          {/* {user?.isAdmin && <TaskDialog task={task} />} */}
+          <TaskDialog task={task} />
         </div>
 
         <>
@@ -125,7 +126,7 @@ const TaskCard = ({ task }) => {
 
       <AddSubTask open={open} setOpen={setOpen} id={task._id} />
     </>
-  );
+  ): null;
 };
 
 export default TaskCard;

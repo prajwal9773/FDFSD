@@ -29,7 +29,7 @@ const Register = () => {
         try {
             const result = await registerr(data).unwrap();
             dispatch(setCredentials(result));
-            navigate('/');
+            navigate('/log-in');
             console.log(result)
         } catch (error) {
             console.log(error)
@@ -37,10 +37,6 @@ const Register = () => {
 
         }
     }
-
-    useEffect(() => {
-        user && navigate("/dashboard");
-    }, [user]);
 
     return (
         <div className='w-full min-h-screen flex items-center justify-center flex-col lg:flex-row bg-[#f3f4f6]'>

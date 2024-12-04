@@ -11,11 +11,14 @@ import AddSubTask from "./AddSubTask";
 import ConfirmatioDialog from "../Dialogs";
 import { useDuplicateTaskMutation, useTrashTaskMutation } from "../../redux/slices/api/taskApiSlice";
 import { toast } from "sonner";
+import { useSelector } from "react-redux";
 
 const TaskDialog = ({ task }) => {
+  const user = useSelector((state) => state.auth);
   const [open, setOpen] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
+  const roles = user.user.role
 
   const navigate = useNavigate();
 
@@ -44,7 +47,6 @@ const TaskDialog = ({ task }) => {
   const deleteClicks = () => {
     setOpenDialog(true);
   };
-
 
   const deleteHandler = async() => {
     try{
@@ -126,7 +128,8 @@ const TaskDialog = ({ task }) => {
                 ))}
               </div>
 
-              <div className='px-1 py-1'>
+              {roles !== "user" && (
+                <div className='px-1 py-1'>
                 <MenuItem>
                   {({ active }) => (
                     <button
@@ -144,6 +147,8 @@ const TaskDialog = ({ task }) => {
                   )}
                 </MenuItem>
               </div>
+              )}
+              
             </MenuItems>
           </Transition>
         </Menu>

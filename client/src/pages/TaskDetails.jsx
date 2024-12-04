@@ -92,7 +92,6 @@ const TaskDetails = () => {
   
   const {data, isLoading, refetch} = useGetSingleTaskQuery(id);
   const [selected, setSelected] = useState(0);
-  // const task = tasks[3];
   const task = data?.task;
 
   if(isLoading)
