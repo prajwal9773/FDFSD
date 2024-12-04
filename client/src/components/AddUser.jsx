@@ -96,20 +96,23 @@ const AddUser = ({ open, setOpen, userData }) => {
               error={errors.email ? errors.email.message : ""}
             />
 
-            <SelectBox
-              placeholder="Role"
-              name="role"
-              label="Role"
-              className="w-full rounded"
-              register={register("role", {
-                required: "User role is required!",
-              })}
-              error={errors.role ? errors.role.message : ""}
-              options={[
-                { value: "user", label: "User" },
-                { value: "team_lead", label: "Team Lead" },
-              ]}
-            />
+            {user?.role !== "Admin" && (
+              <SelectBox
+                placeholder="Role"
+                name="role"
+                label="Role"
+                className="w-full rounded"
+                register={register("role", {
+                  required: "User role is required!",
+                })}
+                error={errors.role ? errors.role.message : ""}
+                options={[
+                  { value: "user", label: "User" },
+                  { value: "team_lead", label: "Team Lead" },
+                ]}
+              />
+            )}
+
 
           </div>
 
