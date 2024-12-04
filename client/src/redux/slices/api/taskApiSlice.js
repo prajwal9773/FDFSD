@@ -4,7 +4,7 @@ const TASK_URL = "/tasks";
 
 export const taskApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getDasboardStats:builder.query({
+        getDashboardStats:builder.query({
             query:()=>({
                 url:`${TASK_URL}/dashboard`,
                 method:"GET",
@@ -103,7 +103,7 @@ export const taskApiSlice = apiSlice.injectEndpoints({
     }),
 });
 
-export const {useGetDasboardStatsQuery
+export const {useGetDashboardStatsQuery
     , useGetAllTaskQuery,
 useCreateTaskMutation,
 useDuplicateTaskMutation,

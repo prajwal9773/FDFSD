@@ -13,7 +13,7 @@ import clsx from "clsx";
 import { Chart } from "../components/Chart";
 import { BGS, PRIOTITYSTYELS, TASK_TYPE, getInitials } from "../utils";
 import UserInfo from "../components/UserInfo";
-import { useGetDasboardStatsQuery } from "../redux/slices/api/taskApiSlice";
+import { useGetDashboardStatsQuery } from "../redux/slices/api/taskApiSlice";
 import Loading from "../components/Loader";
 
 const TaskTable = ({ tasks }) => {
@@ -98,7 +98,6 @@ const UserTable = ({ users }) => {
     <thead className='border-b border-gray-300 '>
       <tr className='text-black  text-left'>
         <th className='py-2'>Full Name</th>
-        <th className='py-2'>Status</th>
         <th className='py-2'>Created At</th>
       </tr>
     </thead>
@@ -119,7 +118,7 @@ const UserTable = ({ users }) => {
         </div>
       </td>
 
-      <td>
+      {/* <td>
         <p
           className={clsx(
             "w-fit px-3 py-1 rounded-full text-sm",
@@ -128,7 +127,7 @@ const UserTable = ({ users }) => {
         >
           {user?.isActive ? "Active" : "Disabled"}
         </p>
-      </td>
+      </td> */}
       <td className='py-2 text-sm'>{moment(user?.createdAt).fromNow()}</td>
     </tr>
   );
@@ -147,9 +146,9 @@ const UserTable = ({ users }) => {
   );
 };
 const Dashboard = () => {
-  const {data, isLoading} = useGetDasboardStatsQuery();
+  const {data, isLoading} = useGetDashboardStatsQuery();
 
- if(isLoading)
+  if(isLoading)
   return(
     <div className="py-10">
       <Loading/>
@@ -168,7 +167,7 @@ const Dashboard = () => {
     },
     {
       _id: "2",
-      label: "COMPLTED TASK",
+      label: "COMPLETED TASK",
       total: totals["completed"] || 0,
       icon: <MdAdminPanelSettings />,
       bg: "bg-[#0f766e]",
@@ -182,7 +181,7 @@ const Dashboard = () => {
     },
     {
       _id: "4",
-      label: "TODOS",
+      label: "TODO",
       total: totals["todo"],
       icon: <FaArrowsToDot />,
       bg: "bg-[#be185d]" || 0,
@@ -210,7 +209,7 @@ const Dashboard = () => {
     );
   };
   return (
-    <div classNamee='h-full py-4'>
+    <div className='h-full py-4'>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
         {stats.map(({ icon, bg, label, total }, index) => (
           <Card key={index} icon={icon} bg={bg} label={label} count={total} />
