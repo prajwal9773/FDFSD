@@ -55,10 +55,8 @@ const Login = () => {
             <p className='flex flex-col gap-0 md:gap-4 text-4xl md:text-6xl 2xl:text-7xl font-black text-center text-blue-700'>
               <span>Planity</span>
             </p>
-            <div className='cell'>
-              <div className='circle rotate-in-up-left'>
-
-              </div>
+            <div className='cell'style={{ display:'flex',justifyContent:'center',alignItems:'center',width: '800px', height: '400px' }}>
+              <img src='./image.png'/>
             </div>
           </div>
 

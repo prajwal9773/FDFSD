@@ -54,10 +54,8 @@ const Register = () => {
                         <p className='flex flex-col gap-0 md:gap-4 text-4xl md:text-6xl 2xl:text-7xl font-black text-center text-blue-700'>
                             <span>Planity</span>
                         </p>
-                        <div className='cell'>
-                            <div className='circle rotate-in-up-left'>
-
-                            </div>
+                        <div className='cell' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '800px', height: '400px' }}>
+                            <img src='./image.png' />
                         </div>
                     </div>
 
@@ -75,89 +73,89 @@ const Register = () => {
                         </div>
                         <div className='flex flex-row gap-y-5'>
                             <div className='gap-y-5 mr-4'>
-                            <Textbox
-                                placeholder='Username'
-                                type='username'
-                                name='name'
-                                label='Username'
-                                className='w-full rounded-full'
-                                register={
-                                    register("name", {
-                                        required: "Username required!",
-                                    })
-                                }
-                                errors={errors.username ? errors.username.message : ""}
+                                <Textbox
+                                    placeholder='Username'
+                                    type='username'
+                                    name='name'
+                                    label='Username'
+                                    className='w-full rounded-full'
+                                    register={
+                                        register("name", {
+                                            required: "Username required!",
+                                        })
+                                    }
+                                    errors={errors.username ? errors.username.message : ""}
 
-                            />
-                            <Textbox
-                                placeholder='email@something.com'
-                                type='email'
-                                name='email'
-                                label='Email Address'
-                                className='w-full rounded-full'
-                                register={
-                                    register("email", {
-                                        required: "Email address required!",
-                                    })
-                                }
-                                errors={errors.email ? errors.email.message : ""}
+                                />
+                                <Textbox
+                                    placeholder='email@something.com'
+                                    type='email'
+                                    name='email'
+                                    label='Email Address'
+                                    className='w-full rounded-full'
+                                    register={
+                                        register("email", {
+                                            required: "Email address required!",
+                                        })
+                                    }
+                                    errors={errors.email ? errors.email.message : ""}
 
-                            />
+                                />
 
-                            <Textbox
-                                placeholder='your password'
-                                type='password'
-                                name='password'
-                                label='Password'
-                                className='w-full rounded-full'
-                                register={
-                                    register("password", {
-                                        required: "password is required!",
-                                    })
-                                }
-                                errors={errors.password ? errors.password.message : ""}
-                            />
+                                <Textbox
+                                    placeholder='your password'
+                                    type='password'
+                                    name='password'
+                                    label='Password'
+                                    className='w-full rounded-full'
+                                    register={
+                                        register("password", {
+                                            required: "password is required!",
+                                        })
+                                    }
+                                    errors={errors.password ? errors.password.message : ""}
+                                />
                             </div>
                             <div>
-                            <Textbox
-                                placeholder='Title'
-                                type='text'
-                                name='title'
-                                label='Title'
-                                className='w-full rounded-full'
-                                register={
-                                    register("title", {
-                                        required: "Title is required!",
-                                    })
-                                }
-                                errors={errors.title ? errors.title.message : ""}
-                            />
+                                <Textbox
+                                    placeholder='Title'
+                                    type='text'
+                                    name='title'
+                                    label='Title'
+                                    className='w-full rounded-full'
+                                    register={
+                                        register("title", {
+                                            required: "Title is required!",
+                                        })
+                                    }
+                                    errors={errors.title ? errors.title.message : ""}
+                                />
 
-                            <SelectBox
-                                label="Role"
-                                name="role"
-                                className="w-full rounded-full"
-                                options={[
-                                    { value: "user", label: "User" },
-                                    { value: "team_lead", label: "Team Lead" },
-                                ]}
-                                register={register("role", {
-                                    required: "Role is required!",
-                                })}
-                                errors={errors.role ? errors.role.message : ""}
-                            />
+                                <SelectBox
+                                    label="Role"
+                                    name="role"
+                                    className="w-full rounded-full"
+                                    options={[
+                                        { value: "user", label: "User" },
+                                        { value: "team_lead", label: "Team Lead" },
+                                    ]}
+                                    register={register("role", {
+                                        required: "Role is required!",
+                                    })}
+                                    errors={errors.role ? errors.role.message : ""}
+                                />
                             </div>
                         </div>
                         {isLoading ? (
-                                <Loading />
-                            ) : (
-                                <Button
-                                    type='submit'
-                                    label='Submit'
-                                    className='w-full h-10 bg-blue-700 text-white'
-                                />
+                            <Loading />
+                        ) : (
+                            <Button
+                                type='submit'
+                                label='Submit'
+                                className='w-full h-10 bg-blue-700 text-white'
+                            />
 
-                            )}
+                        )}
 
                     </form>
 
