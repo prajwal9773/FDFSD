@@ -10,7 +10,7 @@ const About = () => {
                 <header className="text-center mb-10">
                     <h1 className="text-4xl font-bold text-gray-800">About Us</h1>
                     <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
-                        Welcome to <strong>OPlanity</strong>, where collaboration meets innovation.
+                        Welcome to <strong>Planity</strong>, where collaboration meets innovation.
                         Our platform is designed to empower teams of all sizes to achieve their goals efficiently by organizing
                         tasks, managing resources, and improving communication. Whether you're handling small projects or
                         managing large-scale operations, our tool adapts to your needs, ensuring every task is on track

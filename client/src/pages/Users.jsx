@@ -4,7 +4,6 @@ import Button from "../components/Button";
 import { IoMdAdd } from "react-icons/io";
 import { useSelector } from "react-redux"
 import { getInitials } from "../utils";
-import clsx from "clsx";
 import ConfirmatioDialog, { UserAction } from "../components/Dialogs";
 import AddUser from "../components/AddUser";
 import { useDeleteUserMutation, useGetTeamListQuery, useUserActionMutation } from "../redux/slices/api/userApiSlice";

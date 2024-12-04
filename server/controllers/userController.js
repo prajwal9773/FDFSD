@@ -1,7 +1,6 @@
 import User from "../models/user.js";
 import { createJWT } from "../utils/index.js";
 import Notice from "../models/notification.js";
-import bcrypt from "bcryptjs";
 
 
 export const registerUser = async (req, res) => {
@@ -84,7 +83,7 @@ export const loginUser = async (req, res) => {
 export const logoutUser = async (req, res) => {
   try {
     res.cookie("token", "", {
-      htttpOnly: true,
+      httpOnly: true,
       expires: new Date(0),
     });
 
