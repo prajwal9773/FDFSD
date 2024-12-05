@@ -28,10 +28,8 @@ const Login = () => {
       const result = await login(data).unwrap();
       dispatch(setCredentials(result));
       if(result?.role == "Admin"){
-        console.log(result?.role)
         navigate('/dashboard');
       }else{
-        console.log(result?.role)
         navigate('/tasks')
       }
       console.log(result)
