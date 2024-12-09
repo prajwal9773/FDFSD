@@ -18,26 +18,26 @@ const Users = () => {
   const { user } = useSelector((state) => state.auth);
   const roles = user.role
 
-  const{data, isLoading, refetch} = useGetTeamListQuery();
+  const { data, isLoading, refetch } = useGetTeamListQuery();
 
-  const[deleteUser] = useDeleteUserMutation();
-  const[userAction] = useUserActionMutation();
+  const [deleteUser] = useDeleteUserMutation();
+  const [userAction] = useUserActionMutation();
 
-  const userActionHandler = async(data) => {
-    try{
+  const userActionHandler = async (data) => {
+    try {
       const result = await userAction({
-        isActive:!selected?.isActive,
-        id:selected?._id,
+        isActive: !selected?.isActive,
+        id: selected?._id,
       });
 
       refetch();
       toast.success(result.data.message);
       setSelected(null);
-      setTimeout(()=>{
+      setTimeout(() => {
         setOpenAction(false);
       }, 500);
 
-    }catch(error){
+    } catch (error) {
       console.log(error);
       toast.error(err?.data?.message);
 
@@ -61,8 +61,8 @@ const Users = () => {
       toast.error(errorMessage);
     }
   };
-  
-  
+
+
 
   const deleteClick = (id) => {
     setSelected(id);
@@ -73,10 +73,10 @@ const Users = () => {
     setSelected(el);
     setOpen(true);
   };
-const userStatusClick = (el)=>{
-  setSelected(el);
-  setOpenAction(true);
-}
+  const userStatusClick = (el) => {
+    setSelected(el);
+    setOpenAction(true);
+  }
 
 
   const TableHeader = () => (
@@ -90,8 +90,10 @@ const userStatusClick = (el)=>{
     </thead>
   );
 
-  const TableRow = ({ user }) => (
-    <tr className='border-b border-gray-200 text-gray-600 hover:bg-gray-400/10'>
+  const TableRow = ({ user }) => {
+    if (user?.role === "Admin") return null;
+    return(
+      <tr className='border-b border-gray-200 text-gray-600 hover:bg-gray-400/10'>
       <td className='p-2'>
         <div className='flex items-center gap-3'>
           <div className='w-9 h-9 rounded-full text-white flex items-center justify-center text-sm bg-blue-700'>
@@ -119,24 +121,26 @@ const userStatusClick = (el)=>{
         </button>
       </td> */}
       {roles === "Admin" && (
-      <td className='p-2 flex gap-4 justify-end'>
-        <Button
-          className='text-blue-600 hover:text-blue-500 font-semibold sm:px-0'
-          label='Edit'
-          type='button'
-          onClick={() => editClick(user)}
-        />
+        <td className='p-2 flex gap-4 justify-end'>
+          <Button
+            className='text-blue-600 hover:text-blue-500 font-semibold sm:px-0'
+            label='Edit'
+            type='button'
+            onClick={() => editClick(user)}
+          />
 
-        <Button
-          className='text-red-700 hover:text-red-500 font-semibold sm:px-0'
-          label='Delete'
-          type='button'
-          onClick={() => deleteClick(user?._id)}
-        />
-      </td>
+          <Button
+            className='text-red-700 hover:text-red-500 font-semibold sm:px-0'
+            label='Delete'
+            type='button'
+            onClick={() => deleteClick(user?._id)}
+          />
+        </td>
       )}
     </tr>
-  );
+    )
+    
+  };
 
   return (
     <>
@@ -145,27 +149,26 @@ const userStatusClick = (el)=>{
           <Title title='  Team Members' />
           {roles === "Admin" && (
             <Button
-            label='Add New User'
-            icon={<IoMdAdd className='text-lg' />}
-            className='flex flex-row-reverse gap-1 items-center bg-blue-600 text-white rounded-md 2xl:py-2.5'
-            onClick={() => setOpen(true)}
-          />
+              label='Add New User'
+              icon={<IoMdAdd className='text-lg' />}
+              className='flex flex-row-reverse gap-1 items-center bg-blue-600 text-white rounded-md 2xl:py-2.5'
+              onClick={() => setOpen(true)}
+            />
           )}
-          
-        </div>
 
-        <div className='bg-white px-2 md:px-4 py-4 shadow-md rounded'>
-          <div className='overflow-x-auto'>
-            <table className='w-full mb-5'>
-              <TableHeader />
-              <tbody>
-                {data?.map((user, index) => (
-                  <TableRow key={index} user={user} />
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
+          <div className='bg-white px-2 md:px-4 py-4 shadow-md rounded'>
+            <div className='overflow-x-auto'>
+              <table className='w-full mb-5'>
+                <TableHeader />
+                <tbody>
+                  {data?.map((user, index) => (
+                    <TableRow key={index} user={user} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
       </div>
 
       <AddUser
