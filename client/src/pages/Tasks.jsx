@@ -81,7 +81,7 @@ const Tasks = () => {
         )}
       </Tabs>
 
-      <AddTask open={open} setOpen={setOpen} />
+      <AddTask open={open} setOpen={setOpen} task={data?.tasks} />
     </div>
   );
 };

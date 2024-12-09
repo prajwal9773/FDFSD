@@ -20,8 +20,7 @@ const PRIORIRY = ["HIGH", "MEDIUM", "NORMAL", "LOW"];
 
 const uploadedFileURLs = [];
 
-const AddTask = ({ open, setOpen }) => {
-  const task = "";
+const AddTask = ({ open, setOpen, task }) => {
 
   const defaultValues ={
     title: task?.title || "",
