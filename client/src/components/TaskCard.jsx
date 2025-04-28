@@ -8,12 +8,12 @@ import {
 } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { BGS, PRIOTITYSTYELS, TASK_TYPE, formatDate } from "../utils";
-import TaskDialog from "./task/TaskDialog";
+import TaskDialog from "./Task/TaskDialog";
 import { BiMessageAltDetail } from "react-icons/bi";
 import { FaList } from "react-icons/fa";
 import UserInfo from "./UserInfo";
 import { IoMdAdd } from "react-icons/io";
-import AddSubTask from "./task/AddSubTask";
+import AddSubTask from "./Task/AddSubTask";
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp />,

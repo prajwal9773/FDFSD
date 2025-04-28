@@ -78,3 +78,16 @@
 [0mPUT /api/users/notifications [33m400[0m 53.041 ms - 129[0m
 [0mGET /api/users/notifications [32m201[0m 74.468 ms - 2[0m
 [0mGET /api/users/notifications [32m200[0m 35.099 ms - 2[0m
+[0mGET /api/users/notifications [33m401[0m 1.050 ms - 61[0m
+[0mGET /api/tasks/dashboard [33m401[0m 0.266 ms - 61[0m
+[0mPOST /api/users/login [32m200[0m 194.488 ms - 240[0m
+[0mGET /api/users/notifications [32m201[0m 60.749 ms - 2[0m
+[0mGET /api/tasks/dashboard [32m200[0m 126.708 ms - 9428[0m
+[0mGET /api/tasks?stage=&isTrashed=&search= [32m200[0m 108.947 ms - 14691[0m
+[0mGET /api/tasks?stage=completed&isTrashed=&search= [32m200[0m 129.204 ms - 3506[0m
+[0mGET /api/tasks?stage=in%20progress&isTrashed=&search= [32m200[0m 96.838 ms - 3391[0m
+[0mGET /api/tasks?stage=todo&isTrashed=&search= [32m200[0m 99.329 ms - 7880[0m
+[0mGET /api/users/get-team [32m200[0m 60.392 ms - 636[0m
+[0mGET /api/tasks?stage=&isTrashed=true&search= [32m200[0m 92.090 ms - 5041[0m
+[0mDELETE /api/tasks/delete-restore/680e538e4b7de6fe4793d130?actionType=restore [32m200[0m 70.956 ms - 61[0m
+[0mGET /api/tasks?stage=&isTrashed=true&search= [36m304[0m 32.834 ms - -[0m

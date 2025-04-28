@@ -17,6 +17,52 @@ How to run:
   email:user2@gmail.com
   password:user2@gmail.com
 
+## Running with Docker
+
+You can also run the entire application using Docker:
+
+1. Make sure Docker and Docker Compose are installed on your system
+2. From the root directory, run:
+   ```
+   docker-compose up -d
+   ```
+3. This will start all services (frontend, backend, MongoDB, and Redis)
+4. Access the application at http://localhost
+5. To stop the application, run:
+   ```
+   docker-compose down
+   ```
+
+### Docker Commands
+
+- Build and start all containers: `docker-compose up -d`
+- View logs: `docker-compose logs -f`
+- Stop all containers: `docker-compose down`
+- Rebuild containers: `docker-compose up -d --build`
+- View running containers: `docker ps`
+
+### Troubleshooting Docker Issues
+
+If you encounter issues with Docker:
+
+1. **Build Errors**: If you see build errors, try rebuilding with:
+   ```
+   docker-compose up -d --build
+   ```
+
+2. **Container Logs**: Check container logs for errors:
+   ```
+   docker-compose logs -f [service-name]
+   ```
+   Example: `docker-compose logs -f frontend`
+
+3. **Clean Up**: If you need to start fresh:
+   ```
+   docker-compose down -v
+   docker-compose up -d
+   ```
+
+4. **Case Sensitivity**: The Docker setup includes fixes for case sensitivity issues in import paths.
 
 About our project:
 Our platform is designed to empower teams of all sizes to achieve their goals efficiently by organizing tasks, managing resources, and improving communication. Whether you're handling small projects or managing large-scale operations, our tool adapts to your needs, ensuring every task is on track and every milestone is celebrated.
