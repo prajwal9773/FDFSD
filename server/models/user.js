@@ -38,7 +38,19 @@ const userSchema = new Schema({
         default: true,
         required:true
     },
-
+    team: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    domain: [{
+        type: String
+    }],
+    loginHistory: {
+        type: Map,
+        of: Boolean,
+        default: {}
+    },
 }, {
     timestamps:true
 });
